@@ -1,11 +1,24 @@
 
 #import <stdlib.h>
-teste2
+#import <stdio.h>
 
 
-int main(int argc, char const *argv[])
-{
-
-    printf("Testeeeeee");
-    return 0;
+void definirconjunto(int(*conjA),int(*conjB)){
+    printf("Quantidade de numeros no conjunto A: ");
+    scanf("%d",conjA);
+    printf("Quantidade de numeros no conjunto B: ");
+    scanf("%d",conjB);
 }
+
+
+void main()
+{
+    int quantA,quantB,conjA,conjB;
+    definirconjunto(&quantA,&quantB);
+    printf("A quantidade e: %d, %d", quantA,quantB);
+
+}
+
+
+
+
