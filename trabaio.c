@@ -1,11 +1,19 @@
 
 #import <stdlib.h>
-teste2
+#import <stdio.h>
 
 
-int main(int argc, char const *argv[])
+
+int main()
 {
+    int quantA,quantB,conjA,conjB;
 
-    printf("Testeeeeee");
-    return 0;
+}
+
+
+
+
+
+int definirconjunto(){
+    printf("")
 }
