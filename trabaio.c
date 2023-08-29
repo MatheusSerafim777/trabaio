@@ -3,14 +3,19 @@
 #import <stdio.h>
 
 
-int definirconjunto(){
-    printf("t");
+void definirconjunto(int(*conjA),int(*conjB)){
+    printf("Quantidade de numeros no conjunto A: ");
+    scanf("%d",conjA);
+    printf("Quantidade de numeros no conjunto B: ");
+    scanf("%d",conjB);
 }
 
 
-int main()
+void main()
 {
     int quantA,quantB,conjA,conjB;
+    definirconjunto(&quantA,&quantB);
+    printf("A quantidade e: %d, %d", quantA,quantB);
 
 }
 
