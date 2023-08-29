@@ -3,6 +3,10 @@
 #import <stdio.h>
 
 
+int definirconjunto(){
+    printf("t");
+}
+
 
 int main()
 {
@@ -13,7 +17,3 @@ int main()
 
 
 
-
-int definirconjunto(){
-    printf("")
-}
