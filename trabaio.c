@@ -11,16 +11,25 @@ void definirconjunto(int(*quantA),int(*quantB)){
 }
 
 void inserirConj(int conj[],int tamanho){
-    int i,c;
+    int i,c,v;
+    
     for (i=0;i<tamanho;i++){
         do{
+        v = 0; 
         printf("\nEscreva o numero: ");
         scanf("%d",&conj[i]);
         for (c=0;c<tamanho;c++){
-            if(conj[i]=conj[c]);
+            if (c!=i){
+            if(conj[i]==conj[c]){
+                            
+                v = 1;
+                printf("ERRO");
+            }
+            }
+             
         }
         
-        }
+        }while(v==1);
     }
 }
 
