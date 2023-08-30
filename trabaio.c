@@ -1,6 +1,6 @@
 
-#import <stdlib.h>
-#import <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 
 void definirconjunto(int(*conjA),int(*conjB)){
