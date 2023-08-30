@@ -13,10 +13,11 @@ void definirconjunto(int(*conjA),int(*conjB)){
 
 void main()
 {
-    int quantA,quantB,conjA[0],conjB[0];
+    int quantA,quantB,tamanho;
     definirconjunto(&quantA,&quantB);
-    printf("A quantidade e: %d, %d", quantA,quantB);
-
+    int conjA[quantA],conjB[quantB];
+    tamanho = sizeof(conjA)/sizeof(int);
+    printf("A quantidade e: %d, %d, %d", quantA,quantB,tamanho);
 }
 
 
