@@ -29,27 +29,27 @@ void definirconjunto(int(*quantA),int(*quantB)){
     scanf("%d",quantB);
 }
 
+int validarNumero(int *conj,int tamanho, int i){
+    int c;
+    for (c=0;c<tamanho;c++){
+        if (c != i){
+            if(conj[c]==conj[i]){
+                printf("O NUMERO JA EXISTE !!!");
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+
 void inserirConj(int *conj,int tamanho){
-    int i,c,v;
-    
+    int i, validacao;
     for (i=0;i<tamanho;i++){
         do{
-        v = 0; 
-        printf("\nEscreva o numero: ");
-        scanf("%d",&conj[i]);
-        for (c=0;c<tamanho;c++){
-            if (c!=i){
-            if(conj[i]==conj[c]){
-                            
-                v = 1;
-                printf("ERRO");
-            }
-            }
-             
-        }
-        
-        }while(v==1);
-    }
+            printf("\nEscreva o numero: ");
+            scanf("%d",&conj[i]);
+            validacao = validarNumero(conj,tamanho,i);
+        }while (validacao == 1);
 }
 
 void imprimir(int *conj, int tamanho){
