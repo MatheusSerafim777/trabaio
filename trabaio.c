@@ -1,6 +1,25 @@
-
 #include <stdlib.h>
 #include <stdio.h>
+
+int repetcao(int *vetA, int *vetB,int qtdA,int qtdB){
+    int i,c,e;
+    e = 0;
+    for (i = 0; i < qtdA; i++){
+        for(c = 0; c<qtdB;c++ ){
+            if (vetA[i]==vetB[c]){
+                e++;
+
+            }
+        }
+
+        
+    }
+ return e;
+
+}
+
+
+
 
 
 void definirconjunto(int(*quantA),int(*quantB)){
@@ -10,7 +29,7 @@ void definirconjunto(int(*quantA),int(*quantB)){
     scanf("%d",quantB);
 }
 
-void inserirConj(int conj[],int tamanho){
+void inserirConj(int *conj,int tamanho){
     int i,c,v;
     
     for (i=0;i<tamanho;i++){
@@ -33,7 +52,7 @@ void inserirConj(int conj[],int tamanho){
     }
 }
 
-void imprimir(int conj[], int tamanho){
+void imprimir(int *conj, int tamanho){
     int i;
         for (i=0;i<tamanho;i++){
             printf(" %d",conj[i]);
@@ -44,10 +63,11 @@ void imprimir(int conj[], int tamanho){
 
 int main()
 {
-    int quantA,quantB;
+    int quantA,quantB,quantX;
     definirconjunto(&quantA,&quantB);
     int *conjA = malloc(quantA * sizeof(int));
     int *conjB = malloc(quantB * sizeof(int));
+   
     printf("\nCONJUNTO A----------------------");
     inserirConj(conjA,quantA);
     printf("\nCONJUNTO B----------------------");
@@ -56,12 +76,10 @@ int main()
     imprimir(conjA,quantA);
     printf("\nIMPRIMIR CONJUNTO B----------------------");
     imprimir(conjB,quantB);
+    quantX = repetcao(conjA,conjB,quantA,quantB);
+    printf("\n%d",quantX);
     
     
 
     return 0;
 } 
-
-
-
-
