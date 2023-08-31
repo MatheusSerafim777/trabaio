@@ -50,6 +50,7 @@ void inserirConj(int *conj,int tamanho){
             scanf("%d",&conj[i]);
             validacao = validarNumero(conj,tamanho,i);
         }while (validacao == 1);
+    }
 }
 
 void imprimir(int *conj, int tamanho){
