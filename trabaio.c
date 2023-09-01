@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+
 void imprimir(int *conj, int tamanho){
     int i;
         for (i=0;i<tamanho;i++){
@@ -90,7 +91,22 @@ void inserirConj(int *conj,int tamanho){
     }
 }
 
-
+void interseccao(int *conjA, int *conjB, int quantA, int quantB){
+    int quantX,i,c,e;
+    quantX = repetcao(conjA,conjB,quantA,quantB);
+    int *conjX = malloc(quantX * sizeof(int));
+    e=0; 
+    for (i = 0; i < quantA; i++){
+        for(c = 0; c<quantB;c++ ){
+            if (conjA[i]==conjB[c]){
+                conjX[e] = conjA[i];
+                e++;
+            }
+        }           
+    }
+    printf("\nNumeros da interseccao:");
+    imprimir(conjX,quantX);
+}
 
 
 int main()
@@ -114,6 +130,8 @@ int main()
     
     printf("\nIMPRIMIR União----------------------");
     uniao(conjA,conjB,quantA,quantB);
+    interseccao( conjA,  conjB,  quantA,  quantB);
+
     
     
     
