@@ -39,7 +39,7 @@ int i,c,e,v;
 for(i=0; i < qtdA; i++ ){
     vetX[i] = vetA[i];
 }
-for(i=qtdA; i < qtdX; i++ )
+ i = qtdA;
     for(c=0;c<qtdB;c++){
         v = 0;
         for (e=0;e<qtdX;e++){
@@ -50,12 +50,12 @@ for(i=qtdA; i < qtdX; i++ )
         }
         if (v==0){
             vetX[i]=vetB[c];
+            i++;
         }
+    
     }
-    
-    
     imprimir(vetX,qtdX);
-    }
+}
 
 
 
@@ -108,6 +108,34 @@ void interseccao(int *conjA, int *conjB, int quantA, int quantB){
     imprimir(conjX,quantX);
 }
 
+void subtracao(int *vet1,int *vet2,int qtd1,int qtd2){
+    int qtdX,i,c,e,v;
+
+    qtdX = repetcao(vet1,vet2,qtd1,qtd2);
+    qtdX = qtd1-qtdX;
+    int *vetX = malloc(qtdX * sizeof(int));
+    i=0;
+        for(c=0;c<qtd1;c++){
+            v = 0;
+            for(e=0;e<qtd2;e++){
+                if(vet1[c]==vet2[e]){
+                    v = 1;
+                }
+            }
+            if(v==0){
+                vetX[i]=vet1[c];
+            i++;
+            }
+
+        }
+        imprimir(vetX,qtdX);
+
+
+
+    }
+
+
+
 
 int main()
 {
@@ -130,9 +158,12 @@ int main()
     
     printf("\nIMPRIMIR União----------------------");
     uniao(conjA,conjB,quantA,quantB);
+
     interseccao( conjA,  conjB,  quantA,  quantB);
 
-    
+    printf("\nSAUBTRAÇÃO(A-B)---------------- ");
+
+    subtracao(conjA,conjB,quantA,quantB);
     
     
 
