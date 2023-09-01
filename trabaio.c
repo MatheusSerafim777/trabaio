@@ -133,8 +133,56 @@ void subtracao(int *vet1,int *vet2,int qtd1,int qtd2){
 
 
     }
+void diferenca(int *vetA,int *vetB,int qtdA,int qtdB){
+    int qtdX,i,c,e,v;
 
+    qtdX = repetcao(vetA,vetB,qtdA,qtdB);
+    qtdX = qtdA + qtdB - (qtdX * 2);
+    int *vetX = malloc(qtdX * sizeof(int));
+    i=0;
+        for(c=0;c<qtdA;c++){
+            v = 0;
+            for(e=0;e<qtdB;e++){
+                if(vetA[c]==vetB[e]){
+                    v = 1;
+                }
+            }
+            if(v==0){
+                vetX[i]=vetA[c];
+            i++;
+            }
 
+        }
+
+        for(c=0;c<qtdB;c++){
+            v = 0;
+            for(e=0;e<qtdA;e++){
+                if(vetB[c]==vetA[e]){
+                    v = 1;
+                }
+            }
+            if(v==0){
+                vetX[i]=vetB[c];
+            i++;
+            }
+
+        }
+        imprimir(vetX,qtdX);
+}
+
+void multiplicacao(int *vetA,int *vetB,int qtdA,int qtdB){
+    int qtdX,i,c,e;
+    qtdX = qtdA*qtdB;
+    int *vetX = malloc(qtdX * sizeof(int));
+    i=0;
+    for(c=0;c<qtdA;c++){
+        for(e=0;e<qtdB;e++){
+            vetX[i] = ((vetA[c]) * (vetB[e]));
+            i++;
+        }
+    }
+    imprimir(vetX,qtdX);
+}
 
 
 int main()
@@ -164,6 +212,15 @@ int main()
     printf("\nSAUBTRAÇÃO(A-B)---------------- ");
 
     subtracao(conjA,conjB,quantA,quantB);
+
+    printf("\nDIFERENÇA A_B---------------- ");
+    diferenca(conjA,conjB,quantA,quantB);
+
+    printf("\nMULTIPLICAÇÃO A_B---------------- ");
+    multiplicacao(conjA,conjB,quantA,quantB);
+
+
+
     
     
 
