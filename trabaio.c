@@ -191,8 +191,8 @@ int menu(){
     printf("\n**************************");
     printf("\n* 1. UNIAO               *");
     printf("\n* 2. INTERSECAO          *");
-    printf("\n* 3. DIFERENCA           *");            
-    printf("\n* 4. DIFERENCA           *");  
+    printf("\n* 3. A - B               *");            
+    printf("\n* 4. B - A               *");  
     printf("\n* 5. DIFERENCA SIMETRICA *"); 
     printf("\n* 6. A x B               *");
     printf("\n* 7. SAIR                *");   
@@ -218,12 +218,12 @@ int selecionar(int*conjA,int *conjB,int quantA,int quantB){
         return 1;
         break;
     case 3:
-        printf("*        DIFERENCA       *\n");
+        printf("*          A - B         *\n");
         subtracao(conjA,conjB,quantA,quantB);
         return 1;
         break;
     case 4:
-        printf("*        DIFERENCA       *\n");
+        printf("*          B - A         *\n");
         subtracao(conjB,conjA,quantB,quantA);
         return 1;
         break;
