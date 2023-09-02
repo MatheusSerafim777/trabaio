@@ -1,12 +1,19 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
 void imprimir(int *conj, int tamanho){
     int i;
+        printf("{ ");
         for (i=0;i<tamanho;i++){
-            printf("\n%d",conj[i]);
-     
+            if(i > 0){
+                printf(", %d",conj[i]);
+            }
+            else{
+                printf("%d",conj[i]);    
+            }
         }
+        printf(" }");
 }
 
 int repetcao(int *vetA, int *vetB,int qtdA,int qtdB){
@@ -26,35 +33,31 @@ int repetcao(int *vetA, int *vetB,int qtdA,int qtdB){
 
 }
 
-
-
-
-
 void uniao(int *vetA,int *vetB,int qtdA,int qtdB){
-int qtdX;
-qtdX = repetcao(vetA,vetB,qtdA,qtdB);
-qtdX = qtdA + qtdB - qtdX;
-int *vetX = malloc(qtdX * sizeof(int));
-int i,c,e,v;
-for(i=0; i < qtdA; i++ ){
-    vetX[i] = vetA[i];
-}
- i = qtdA;
-    for(c=0;c<qtdB;c++){
-        v = 0;
-        for (e=0;e<qtdX;e++){
-            if (vetX[e]==vetB[c]) {
-                v = 1;
-            }
-                 
-        }
-        if (v==0){
-            vetX[i]=vetB[c];
-            i++;
-        }
-    
+    int qtdX;
+    qtdX = repetcao(vetA,vetB,qtdA,qtdB);
+    qtdX = qtdA + qtdB - qtdX;
+    int *vetX = malloc(qtdX * sizeof(int));
+    int i,c,e,v;
+    for(i=0; i < qtdA; i++ ){
+        vetX[i] = vetA[i];
     }
-    imprimir(vetX,qtdX);
+    i = qtdA;
+        for(c=0;c<qtdB;c++){
+            v = 0;
+            for (e=0;e<qtdX;e++){
+                if (vetX[e]==vetB[c]) {
+                    v = 1;
+                }
+                    
+            }
+            if (v==0){
+                vetX[i]=vetB[c];
+                i++;
+            }
+        
+        }
+        imprimir(vetX,qtdX);
 }
 
 
@@ -135,7 +138,6 @@ void subtracao(int *vet1,int *vet2,int qtd1,int qtd2){
     }
 void diferenca(int *vetA,int *vetB,int qtdA,int qtdB){
     int qtdX,i,c,e,v;
-
     qtdX = repetcao(vetA,vetB,qtdA,qtdB);
     qtdX = qtdA + qtdB - (qtdX * 2);
     int *vetX = malloc(qtdX * sizeof(int));
@@ -184,45 +186,90 @@ void multiplicacao(int *vetA,int *vetB,int qtdA,int qtdB){
     imprimir(vetX,qtdX);
 }
 
+int menu(){
+    int resp;
+    printf("\n**************************");
+    printf("\n* 1. UNIAO               *");
+    printf("\n* 2. INTERSECAO          *");
+    printf("\n* 3. DIFERENCA           *");            
+    printf("\n* 4. DIFERENCA           *");  
+    printf("\n* 5. DIFERENCA SIMETRICA *"); 
+    printf("\n* 6. A x B               *");
+    printf("\n* 7. SAIR                *");   
+    printf("\n**************************");
+    printf("\nDIGITE UMA OPCAO ACIMA: ");
+    scanf("%d",&resp); 
+    printf("**************************\n");
+    return resp;
+}
+
+int selecionar(int*conjA,int *conjB,int quantA,int quantB){
+    int resp = menu();
+    switch (resp)
+    {
+    case 1:
+        printf("*          UNIAO         *\n");
+        uniao(conjA,conjB,quantA,quantB);
+        return 1;
+        break;
+    case 2:
+        printf("*        INTERSECAO      *\n");
+        interseccao(conjA,conjB,quantA,quantB);
+        return 1;
+        break;
+    case 3:
+        printf("*        DIFERENCA       *\n");
+        subtracao(conjA,conjB,quantA,quantB);
+        return 1;
+        break;
+    case 4:
+        printf("*        DIFERENCA       *\n");
+        subtracao(conjB,conjA,quantB,quantA);
+        return 1;
+        break;
+    case 5:
+        printf("*  DIFERENCA SIMETRICA   *\n");
+        diferenca(conjA,conjB,quantA,quantB);
+        return 1;
+        break;
+    case 6:
+        printf("*         A x B          *\n");
+        multiplicacao(conjA,conjB,quantA,quantB);
+        return 1;
+        break;
+    case 7:
+        return -1;
+        break;
+    
+    default:
+        printf("OPCAO INVALIDA");
+        printf("\n***************************\n");
+        return 1;
+        break;
+    }
+}
+
 
 int main()
 {
-    int quantA,quantB;
+    int quantA,quantB,validacao;
     definirconjunto(&quantA,&quantB);
     int *conjA = malloc(quantA * sizeof(int));
     int *conjB = malloc(quantB * sizeof(int));
-   
-    printf("\nCONJUNTO A----------------------");
+
+    printf("\n*CONJUNTO A*");
     inserirConj(conjA,quantA);
     
-    printf("\nCONJUNTO B----------------------");
+    printf("\n*CONJUNTO B*");
     inserirConj(conjB,quantB);
-    
-    printf("\nIMPRIMIR CONJUNTO A----------------------");
-    imprimir(conjA,quantA);
-    
-    printf("\nIMPRIMIR CONJUNTO B----------------------");
-    imprimir(conjB,quantB);
-    
-    printf("\nIMPRIMIR União----------------------");
-    uniao(conjA,conjB,quantA,quantB);
-
-    interseccao( conjA,  conjB,  quantA,  quantB);
-
-    printf("\nSAUBTRAÇÃO(A-B)---------------- ");
-
-    subtracao(conjA,conjB,quantA,quantB);
-
-    printf("\nDIFERENÇA A_B---------------- ");
-    diferenca(conjA,conjB,quantA,quantB);
-
-    printf("\nMULTIPLICAÇÃO A_B---------------- ");
-    multiplicacao(conjA,conjB,quantA,quantB);
-
-
-
-    
-    
-
+    do
+    {   
+        printf("\n**************************\n");
+        printf("*  NUMEROS DO CONJUNTO A *\n");
+        imprimir(conjA,quantA);
+        printf("\n*  NUMEROS DO CONJUNTO B *\n");
+        imprimir(conjB,quantB);
+        validacao = selecionar(conjA,conjB,quantA,quantB);
+    } while (validacao > 0);
     return 0;
 } 
